@@ -1,0 +1,23 @@
+{
+    "best_hyperparameters": {
+        "hidden_size": 128,
+        "num_layers": 3,
+        "bidirectional": false,
+        "lr": 0.001282451504842623,
+        "weight_decay": 2.153038323995356e-05,
+        "batch_size": 64,
+        "dropout_fc": 0.43858951795366186
+    },
+    "best_validation_loss": 0.4520173966884613,
+    "best_validation_auc": 0.8403225806451613,
+    "best_epoch": 15,
+    "test_metrics": {
+        "loss": 0.6026902794837952,
+        "accuracy": 0.796875,
+        "precision": 0.7307692307692307,
+        "recall": 0.76,
+        "f1_score": 0.7450980392156863,
+        "auc": 0.7887179487179488
+    },
+    "features_used": "..\\experiments\\exp_03\\processed_data\\features"
+}
