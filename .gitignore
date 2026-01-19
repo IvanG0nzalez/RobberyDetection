@@ -1,0 +1,92 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Entornos virtuales
+venv/
+env/
+ENV/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ARCHIVOS PESADOS DEL PROYECTO
+
+# DATA - Videos originales
+# Ignorar todos los videos
+data/raw/dataset_videos_original/**/*.mp4
+data/raw/dataset_videos_recortados/**/*.mp4
+
+# EXCEPCIONES: Incluir solo archivos de muestra específicos
+# 1 video Normal y 1 video Robbery como ejemplo
+!data/raw/dataset_videos_original/Normal/Normal_Videos001_x264.mp4
+!data/raw/dataset_videos_original/Robbery/Robbery001_x264.mp4
+!data/raw/dataset_videos_recortados/Normal/Normal_Videos001_x264.mp4
+!data/raw/dataset_videos_recortados/Robbery/Robbery001_x264.mp4
+
+# DATA - Clips intermedios
+# Ignorar todos los clips procesados
+data/interim/**/
+# Mantener la estructura de directorios vacíos
+!data/interim/*/
+!data/interim/*/.gitkeep
+
+# EXPERIMENTS - Datos procesados
+# Ignorar todos los archivos en processed_data pero conservar estructura de directorios
+experiments/*/processed_data/**/*
+!experiments/*/processed_data/**/
+!experiments/*/processed_data/**/.gitkeep
+
+# Ignorar todos los datos procesados de experimentos en results
+experiments/*/results/**/*
+
+# EXCEPCIONES: Mantener solo algunos archivos de ejemplo
+# Permitir archivos .gitkeep y README para mantener estructura
+!experiments/*/results/.gitkeep
+!experiments/*/results/tables/
+!experiments/*/results/tables/*.csv
+!experiments/*/results/tables/*.json
+!experiments/*/results/plots/
+!experiments/*/results/plots/*.png
+!experiments/*/results/plots/*.csv
+!experiments/*/results/models/
+!experiments/*/results/models/*.pth
+
+# Mantener archivos de configuración de experimentos
+!experiments/*/config_run.yml
+
+# MODELS - Modelos entrenados
+# Ignorar modelos .pt y .pth (pueden ser muy grandes)
+#*.pt
+#*.pth
+!src/models/.gitkeep
+
+# RESULTS - Resultados finales
+# Mantener código de inferencia pero ignorar modelos pesados
+results/*.pth
+results/*.pt
+
+# NUMPY ARRAYS
+# Los archivos .npy de features pueden ser pesados
+**/*.npy

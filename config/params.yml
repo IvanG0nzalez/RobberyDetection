@@ -1,0 +1,47 @@
+random_seed: 42
+
+#Aquí empiezan los experimentos con el dataset de videos recortados
+experiment:
+  name: "exp_13"
+  base_dir: "../experiments"
+
+data_source:
+  raw_videos_dir: "../data/raw/dataset_videos_recortados"
+  input_clips_dir: "../data/interim/clips_recortados_13"
+
+data_pipeline:
+  balance_mode: "none"
+  splitted_clips_output_subdir: "processed_data/clips_splitted"
+  manifests_subdir: "results/tables"
+  
+
+video_processing:
+  clip_length: 16
+  max_segments_per_video: 32
+  overlapping: false
+  stride: 8
+  balance_max_ratio: 1.2
+  split_ratios: [0.64, 0.16, 0.20]
+
+feature_extraction:
+  features_output_subdir: "processed_data/features"
+  extractor: "r3d"
+
+lstm_model:
+  input_size: 512
+
+training:
+  epochs: 60
+  patience: 10
+
+optuna_search:
+  n_trials: 100
+  results_csv_name: "optuna_lstm_trials.csv"
+
+model_artifacts:
+  models_subdir: "results/models"
+  final_model_name: "best_lstm_model.pth"
+  final_metrics_name: "lstm_final_metrics.json"
+  training_history_name: "lstm_training_history.json"
+  test_predictions_name: "lstm_test_predictions.json"
+  plots_subdir: "results/plots"
