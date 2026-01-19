@@ -74,7 +74,7 @@ El repositorio incluye:
 - 1 video Robbery: `data/raw/dataset_videos_recortados/Robbery/Robbery001_x264.mp4`
 
 Para obtener el dataset completo:
-1. Descargar los videos desde [fuente del dataset - agregar enlace]
+1. Descargar los videos desde https://www.kaggle.com/datasets/ivang0nzalez/robbery-and-normal-videos-for-classification
 2. Colocar los videos en los directorios correspondientes
 3. Seguir la estructura indicada en `data/raw/README.md`
 

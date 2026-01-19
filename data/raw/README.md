@@ -27,7 +27,7 @@ Por limitaciones de tamaño, este repositorio solo incluye **1 video de muestra*
 ## Dataset completo
 
 Para obtener el dataset completo:
-1. Descargar los videos correspondientes desde [fuente del dataset]
+1. Descargar los videos correspondientes desde https://www.kaggle.com/datasets/ivang0nzalez/robbery-and-normal-videos-for-classification
 2. Colocarlos en los directorios correspondientes
 3. Asegurar de que los nombres de archivo sigan el patrón: `Normal_Videos*_x264.mp4` y `Robbery*_x264.mp4`
 
