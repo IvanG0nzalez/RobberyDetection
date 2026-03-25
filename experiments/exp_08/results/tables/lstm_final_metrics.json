@@ -2,22 +2,22 @@
     "best_hyperparameters": {
         "hidden_size": 64,
         "num_layers": 3,
-        "bidirectional": true,
-        "lr": 0.001466856949780402,
-        "weight_decay": 0.0001779656063763704,
-        "batch_size": 16,
-        "dropout_fc": 0.44497704979921554
+        "bidirectional": false,
+        "lr": 0.0008139861054395097,
+        "weight_decay": 5.369942448544484e-05,
+        "batch_size": 64,
+        "dropout_fc": 0.4546561464643407
     },
-    "best_validation_loss": 0.2734622557957967,
-    "best_validation_auc": 0.9580000000000001,
-    "best_epoch": 32,
+    "best_validation_loss": 0.5473858714103699,
+    "best_validation_auc": 0.8225806451612903,
+    "best_epoch": 11,
     "test_metrics": {
-        "loss": 0.7976436614990234,
-        "accuracy": 0.8035714285714286,
-        "precision": 0.7692307692307693,
-        "recall": 0.8,
-        "f1_score": 0.7843137254901961,
-        "auc": 0.8103225806451614
+        "loss": 0.6426922082901001,
+        "accuracy": 0.703125,
+        "precision": 0.6666666666666666,
+        "recall": 0.48,
+        "f1_score": 0.5581395348837209,
+        "auc": 0.7271794871794871
     },
-    "features_used": "..\\experiments\\exp_08\\processed_data\\features"
+    "features_manifest": "..\\experiments\\exp_08\\results\\tables\\manifest_features.csv"
 }
