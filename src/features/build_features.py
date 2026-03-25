@@ -1,5 +1,4 @@
 import torch
-import torchvision
 from torchvision.models.video import r3d_18, R3D_18_Weights
 from torchvision import transforms
 import torch.nn as nn
@@ -10,7 +9,7 @@ from pathlib import Path
 import argparse
 from tqdm import tqdm
 
-# Clase base pra extracción (estructura)
+# Clase base pra extracción
 class BaseFeatureExtractor:
     def __init__(self, device):
         self.device = device
@@ -22,7 +21,7 @@ class BaseFeatureExtractor:
     def __call__(self, clip_path):
         raise NotImplementedError("Cada extractor debe ser 'callable'. (__call__)")
     
-# Extractor 1: Solo R3D_18
+# Extractor
 class R3DExtractor(BaseFeatureExtractor):
     def __init__(self, device):
         self.transform = transforms.Compose([
@@ -62,47 +61,59 @@ class R3DExtractor(BaseFeatureExtractor):
         return features.cpu().squeeze().numpy()  # Forma: (feature_dim,)
 
 
-def process_dataset(input_dir, output_dir, extractor):
+def process_clips_from_manifest(manifest_csv, output_dir, extractor):
     """
-    Procesa todos los clips en el directorio de entrada, extrae características usando el extractor dado,
-    y guarda las características en el directorio de salida.
+    Procesa clips basándose en un manifest CSV y extrae características.
+    Guarda las características en output_dir/<class>/<directoryname>.npy
+    
+    Args:
+        manifest_csv: Ruta al CSV con columnas: class, directoryname, directorypath, numclips
+        output_dir: Directorio donde se guardarán los archivos .npy
+        extractor: Instancia del extractor de features
     """
+    import pandas as pd
+    
     project_root = Path(__file__).resolve().parent.parent.parent
-    input_dir = input_dir.resolve()
-    output_dir = output_dir.resolve()
+    output_dir = Path(output_dir).resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    df = pd.read_csv(manifest_csv)
+    
+    print(f"Procesando {len(df)} directorios de clips desde el manifest...")
+    
+    for _, row in tqdm(df.iterrows(), total=len(df), desc="Procesando clips"):
+        class_name = row['class']
+        dir_name = row['directoryname']
+        dir_path = project_root / row['directorypath']
+        
+        # Ruta de salida para este directorio
+        output_path = output_dir / class_name
+        output_path.mkdir(parents=True, exist_ok=True)
+        
+        save_name = output_path / f"{dir_name}.npy"
+        
+        # Si ya existe, omitir
+        if save_name.exists():
+            continue
+        
+        # Procesar todos los clips del directorio
+        features_list = []
+        for clip_file in sorted(dir_path.glob("*.mp4")):
+            try:
+                feat = extractor(str(clip_file))
+                features_list.append(feat)
+            except Exception as e:
+                print(f"Error procesando {clip_file}: {e}")
+        
+        # Guardar features si se procesaron clips
+        if features_list:
+            features_array = np.array(features_list)
+            np.save(save_name, features_array)
 
-    for split_dir in input_dir.iterdir():
-        if not split_dir.is_dir(): continue
-        for class_dir in split_dir.iterdir():
-            if not class_dir.is_dir(): continue
-            
-            output_path = output_dir / split_dir.name / class_dir.name
-            output_path.mkdir(parents=True, exist_ok=True)
-
-            print(f"Procesando: {class_dir.relative_to(project_root)}")
-
-            for video_folder in tqdm(sorted(class_dir.iterdir()), desc=f"{split_dir.name}/{class_dir.name}"):
-                if not video_folder.is_dir(): continue
-                
-                save_name = output_path / f"{video_folder.name}.npy"
-                if save_name.exists():
-                    continue
-
-                features_list = []
-                for clip_file in sorted(video_folder.glob("*.mp4")):
-                    try:
-                        feat = extractor(clip_file)
-                        features_list.append(feat)
-                    except Exception as e:
-                        print(f"Error procesando {clip_file}: {e}")
-
-                if features_list:
-                    features_array = np.array(features_list)
-                    np.save(save_name, features_array)
 
 def main():
     parser = argparse.ArgumentParser(description="Extraer features de un dataset de clips de video.")
-    parser.add_argument('--input_dir', type=str, required=True, help="Directorio raíz del dataset de clips con splits.")
+    parser.add_argument('--manifest_csv', type=str, default=None, help="Ruta al manifest CSV con los clips a procesar.")
     parser.add_argument('--output_dir', type=str, required=True, help="Directorio donde se guardarán los archivos .npy de features.")
     parser.add_argument('--extractor', type=str, choices=['r3d'], default='r3d', help="Tipo de extractor a usar.")
     args = parser.parse_args()
@@ -115,7 +126,12 @@ def main():
     else:
         raise ValueError(f"Extractor '{args.extractor}' no implementado.")
     
-    process_dataset(Path(args.input_dir), Path(args.output_dir), extractor)
+    if args.manifest_csv:
+        # Nuevo método: procesar desde manifest
+        print(f"Procesando clips desde manifest: {args.manifest_csv}")
+        process_clips_from_manifest(args.manifest_csv, Path(args.output_dir), extractor)
+    else:
+        raise ValueError("Debe especificar --manifest_csv o --input_dir")
 
 if __name__ == "__main__":
     main()
