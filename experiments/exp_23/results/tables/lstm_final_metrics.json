@@ -1,0 +1,23 @@
+{
+    "best_hyperparameters": {
+        "hidden_size": 192,
+        "num_layers": 2,
+        "bidirectional": false,
+        "lr": 0.0005166875891499078,
+        "weight_decay": 3.4743456626614208E-05,
+        "batch_size": 64,
+        "dropout_fc": 0.5186203416121847
+    },
+    "best_validation_loss": 0.5464795231819153,
+    "best_validation_auc": 0.8387096774193549,
+    "best_epoch": 16,
+    "test_metrics": {
+        "loss": 0.5180198550224304,
+        "accuracy": 0.78125,
+        "precision": 0.7391304347826086,
+        "recall": 0.68,
+        "f1_score": 0.7083333333333334,
+        "auc": 0.8297435897435897
+    },
+    "features_manifest": "..\\experiments\\exp_23\\results\\tables\\manifest_features.csv"
+}
