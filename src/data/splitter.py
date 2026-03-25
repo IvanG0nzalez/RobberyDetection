@@ -1,32 +1,24 @@
 import pandas as pd
 import numpy as np
-import shutil
 import argparse
 from pathlib import Path
 from sklearn.model_selection import train_test_split
-from tqdm import tqdm
 
-def split_and_copy_dataset(
+def split_dataset(
         input_csv,
-        output_dir,
         output_csv,
         ratios = (0.7, 0.15, 0.15),
         random_seed = 42
 ):
     """
-    Lee un manifiesto CSV, divide los datos en train/val/test de forma estratificada,
-    y copia los directorios de clips a una nueva estructura de carpetas.
+    Lee un manifiesto CSV y divide los datos en train/val/test de forma estratificada.
+    No copia archivos físicamente, solo genera el manifest con la columna 'split'.
     Args:
         input_csv (str): Ruta al archivo CSV manifest del dataset a dividir.
-        output_dir (str): Directorio raíz donde se copiarán los datos divididos.
         output_csv (str): Ruta para guardar el nuevo manifest con la columna 'split'.
         ratios (tuple): Tupla con las proporciones para train, val y test. Debe sumar 1.0.
         random_seed (int): Semilla para la reproducibilidad de la división.
     """
-    project_root = Path(__file__).resolve().parent.parent.parent
-    output_dir_path = Path(output_dir)
-    output_dir_path.mkdir(parents=True, exist_ok=True)
-
     df = pd.read_csv(input_csv)
 
     class_counts = df["class"].value_counts()
@@ -58,28 +50,16 @@ def split_and_copy_dataset(
 
     print("\nDistribución de videos por split y clase:")
     print(pd.crosstab(final_df['split'], final_df['class']))
-
-    print(f"\nCopiando directorios de clips a {output_dir_path.resolve()}")
-    for _, row in tqdm(final_df.iterrows(), total=len(final_df), desc="Copiando videos"):
-        src_dir = project_root / row["directorypath"]
-
-        dst_dir = output_dir_path / row["split"] / row["class"] / row["directoryname"]
-
-        dst_dir.parent.mkdir(parents=True, exist_ok=True)
-
-        if src_dir.exists() and not dst_dir.exists():
-            shutil.copytree(src_dir, dst_dir)
     
     if output_csv:
         output_csv_path = Path(output_csv)
         output_csv_path.parent.mkdir(parents=True, exist_ok=True)
         final_df.to_csv(output_csv_path, index=False)
-        print(f"\nNuevo manifiesto con splits guardado en: {output_csv_path.resolve()}")
+        print(f"\nManifiesto con splits guardado en: {output_csv_path.resolve()}")
 
 def main():
-    parser = argparse.ArgumentParser(description="Divide un dataset de clips en train/val/test y copia los archivos.")
+    parser = argparse.ArgumentParser(description="Divide un dataset de clips en train/val/test sin copiar archivos.")
     parser.add_argument("--input_csv", type=str, required=True, help="Ruta al archivo CSV manifest del dataset a dividir.")
-    parser.add_argument("--output_dir", type=str, required=True, help="Directorio raíz donde se copiarán los datos divididos.")
     parser.add_argument("--output_csv", type=str, required=True, help="Ruta para guardar el nuevo manifest con la columna 'split'.")
     parser.add_argument("--ratios", nargs=3, type=float, default=[0.7, 0.15, 0.15], help="Proporciones para train, val y test. Debe sumar 1.0.")
     parser.add_argument("--seed", type=int, default=42, help="Semilla para la reproducibilidad de la división.")
@@ -88,9 +68,8 @@ def main():
     if not np.isclose(sum(args.ratios), 1.0):
         raise ValueError("Las proporciones deben sumar 1.0")
 
-    split_and_copy_dataset(
+    split_dataset(
         input_csv=args.input_csv,
-        output_dir=args.output_dir,
         output_csv=args.output_csv,
         ratios=tuple(args.ratios),
         random_seed=args.seed
