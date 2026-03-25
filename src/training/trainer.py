@@ -48,27 +48,74 @@ def evaluate(model, loader, criterion, device):
     
     return avg_loss, acc, prec, rec, f1, auc, all_labels, all_preds, all_probs
 
-def train_model(config, features_root, save_path, device, num_epochs=60, patience=10, seed=42):
+
+def evaluate_with_attention(model, loader, criterion, device):
+    """
+    Evalúa el modelo y captura los pesos de atención para explicabilidad.
+    
+    Returns:
+        Mismas métricas que evaluate() + attention_weights (lista de arrays)
+    """
+    model.eval()
+    all_labels, all_preds, all_probs = [], [], []
+    all_attention_weights = []
+    total_loss = 0.0
+
+    with torch.no_grad():
+        for features, labels in loader:
+            features, labels = features.to(device), labels.to(device)
+            
+            outputs = model(features)
+            loss = criterion(outputs, labels)
+            total_loss += loss.item()
+
+            probs = outputs.cpu().numpy().reshape(-1)
+            preds = (probs >= 0.5).astype(int)
+            all_labels.extend(labels.cpu().numpy().reshape(-1))
+            all_preds.extend(preds)
+            all_probs.extend(probs)
+            
+            # Capturar pesos de atención si están disponibles
+            attention_weights = model.get_attention_weights()
+            if attention_weights is not None:
+                # Convertir a numpy y guardar para cada muestra del batch
+                all_attention_weights.extend(attention_weights.cpu().numpy())
+
+    avg_loss = total_loss / max(1, len(loader))
+
+    acc = accuracy_score(all_labels, all_preds)
+    prec = precision_score(all_labels, all_preds, zero_division=0.0)
+    rec = recall_score(all_labels, all_preds)
+    f1 = f1_score(all_labels, all_preds)
+    auc = roc_auc_score(all_labels, all_probs)
+    
+    return avg_loss, acc, prec, rec, f1, auc, all_labels, all_preds, all_probs, all_attention_weights
+
+def train_model(config, features_manifest=None, save_path=None, device=None, num_epochs=60, patience=10, seed=42):
     """
     Entrena el modelo LSTM con una configuración dada y guarda el mejor modelo.
     Args:
         config (dict): Configuración del modelo y entrenamiento.
-        features_root (str): Ruta raíz de los datos de características.
+        features_manifest (str): Ruta al manifest CSV de features.
         save_path (str): Ruta para guardar el mejor modelo.
         device (torch.device): Dispositivo para entrenamiento (CPU o GPU).
         num_epochs (int): Número máximo de épocas para entrenar.
         patience (int): Paciencia para early stopping.
+        seed (int): Semilla para reproducibilidad.
     """
     set_seed(seed)
 
     print(f"Entrenando con Config: {config}\n")
     start_time = time.time()
 
-    features_root = Path(features_root)
     save_path = Path(save_path)
     save_path.parent.mkdir(parents=True, exist_ok=True)
 
-    train_loader, val_loader, test_loader = build_dataloaders(features_root, batch_size=config["batch_size"], seed=seed)
+    # Usar manifest si está disponible, sino usar features_root (legacy)
+    if features_manifest:
+        train_loader, val_loader, test_loader = build_dataloaders(features_manifest, batch_size=config["batch_size"], seed=seed)
+    else:
+        raise ValueError("Debe especificar features_manifest")
 
     model = LSTMClassifier(
         input_size=config.get("input_size", 512),
@@ -144,10 +191,15 @@ def train_model(config, features_root, save_path, device, num_epochs=60, patienc
     elapsed_time = time.time() - start_time
     print(f"\nEntrenamiento completado en {elapsed_time:.2f} segundos.")
 
-    # evaluar el mejor modelo en test
+    # evaluar el mejor modelo en test CON captura de pesos de atención
     print(f"\nCargando el mejor modelo para evaluación en test.")
     model.load_state_dict(torch.load(save_path))
-    test_loss, t_acc, t_prec, t_rec, t_f1, t_auc, t_labels, t_preds, t_probs = evaluate(model, test_loader, criterion, device)
+    
+    # Usar evaluate_with_attention para capturar explicabilidad
+    test_loss, t_acc, t_prec, t_rec, t_f1, t_auc, t_labels, t_preds, t_probs, t_attention = evaluate_with_attention(
+        model, test_loader, criterion, device
+    )
+    
     print(f"\nMétricas finales en test")
     print(f"Loss: {test_loss:.4f} | Acc: {t_acc:.4f} | Prec: {t_prec:.4f} | Rec: {t_rec:.4f} | F1: {t_f1:.4f} | AUC: {t_auc:.4f}")
 

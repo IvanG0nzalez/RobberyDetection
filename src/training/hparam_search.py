@@ -2,7 +2,6 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import optuna
-from pathlib import Path
 import random
 import numpy as np
 
@@ -19,9 +18,10 @@ def set_seed(seed):
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
-def objective(trial, features_root, device, num_epochs=60, patience=10, input_size=512, seed=42):
+def objective(trial, features_manifest=None, features_root=None, device=None, num_epochs=60, patience=10, input_size=512, seed=42):
     """Función objetivo para la búsqueda de hiperparámetros con Optuna."""
 
+    # Usar el mismo seed global para todos los trials
     set_seed(seed)
 
     config = {
@@ -33,16 +33,25 @@ def objective(trial, features_root, device, num_epochs=60, patience=10, input_si
         "weight_decay": trial.suggest_float("weight_decay", 1e-5, 1e-3, log=True),
         "batch_size": trial.suggest_categorical("batch_size", [16, 32, 64]),
         "dropout_fc": trial.suggest_float("dropout_fc", 0.2, 0.6),
+        "use_attention": True,  # Siempre usar atención para explicabilidad
     }
 
-    train_loader, val_loader, _ = build_dataloaders(features_root, batch_size=config["batch_size"], seed=seed)
+    # Usar manifest si está disponible, sino usar features_root
+    if features_manifest:
+        train_loader, val_loader, _ = build_dataloaders(features_manifest, batch_size=config["batch_size"], seed=seed)
+    elif features_root:
+        from src.data.datasets import build_dataloaders_legacy
+        train_loader, val_loader, _ = build_dataloaders_legacy(features_root, batch_size=config["batch_size"], seed=seed)
+    else:
+        raise ValueError("Debe especificar features_manifest o features_root")
 
     model = LSTMClassifier(
         input_size=config["input_size"],
         hidden_size=config["hidden_size"],
         num_layers=config["num_layers"],
         bidirectional=config["bidirectional"],
-        dropout_fc=config["dropout_fc"]
+        dropout_fc=config["dropout_fc"],
+        use_attention=True  # Siempre usar atención
     ).to(device)
 
     criterion = nn.BCELoss()
@@ -75,5 +84,7 @@ def objective(trial, features_root, device, num_epochs=60, patience=10, input_si
         
         if trial.should_prune():
             raise optuna.exceptions.TrialPruned()
+    
+    trial.set_user_attr("best_val_auc", auc)  # Guardar AUC del trial para referencia
         
     return best_val_loss
