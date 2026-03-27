@@ -1,0 +1,578 @@
+[
+  {
+    "directoryname": "Normal_004",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_004.npy",
+    "index": 0,
+    "loss": 0.8189677000045776,
+    "prediction": 0.5591134428977966,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_037",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_037.npy",
+    "index": 1,
+    "loss": 0.6542598009109497,
+    "prediction": 0.4801732897758484,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_049",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_049.npy",
+    "index": 2,
+    "loss": 0.15081346035003662,
+    "prediction": 0.139991894364357,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_052",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_052.npy",
+    "index": 3,
+    "loss": 0.4354110360145569,
+    "prediction": 0.35300132632255554,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_109",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_109.npy",
+    "index": 4,
+    "loss": 0.15008170902729034,
+    "prediction": 0.13936235010623932,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_146",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_146.npy",
+    "index": 5,
+    "loss": 0.19379185140132904,
+    "prediction": 0.17617063224315643,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_151",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_151.npy",
+    "index": 6,
+    "loss": 0.17137975990772247,
+    "prediction": 0.15749843418598175,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_157",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_157.npy",
+    "index": 7,
+    "loss": 0.37750962376594543,
+    "prediction": 0.31443339586257935,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_160",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_160.npy",
+    "index": 8,
+    "loss": 0.178302600979805,
+    "prediction": 0.16331079602241516,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_166",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_166.npy",
+    "index": 9,
+    "loss": 0.20605535805225372,
+    "prediction": 0.1862119734287262,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_167",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_167.npy",
+    "index": 10,
+    "loss": 0.3413810431957245,
+    "prediction": 0.2892119884490967,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_180",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_180.npy",
+    "index": 11,
+    "loss": 0.37886977195739746,
+    "prediction": 0.3153652250766754,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_211",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_211.npy",
+    "index": 12,
+    "loss": 0.24714483320713043,
+    "prediction": 0.21897242963314056,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_234",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_234.npy",
+    "index": 13,
+    "loss": 0.17074814438819885,
+    "prediction": 0.15696613490581512,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_312",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_312.npy",
+    "index": 14,
+    "loss": 0.30895885825157166,
+    "prediction": 0.2657890319824219,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_313",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_313.npy",
+    "index": 15,
+    "loss": 0.16898317635059357,
+    "prediction": 0.1554768830537796,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_323",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_323.npy",
+    "index": 16,
+    "loss": 0.14226830005645752,
+    "prediction": 0.1326114982366562,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_349",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_349.npy",
+    "index": 17,
+    "loss": 0.16996082663536072,
+    "prediction": 0.15630213916301727,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_354",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_354.npy",
+    "index": 18,
+    "loss": 0.15036346018314362,
+    "prediction": 0.13960479199886322,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_360",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_360.npy",
+    "index": 19,
+    "loss": 0.6007483005523682,
+    "prediction": 0.4515988826751709,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_370",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_370.npy",
+    "index": 20,
+    "loss": 0.14937005937099457,
+    "prediction": 0.13874965906143188,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_371",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_371.npy",
+    "index": 21,
+    "loss": 0.38388514518737793,
+    "prediction": 0.31879034638404846,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_439",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_439.npy",
+    "index": 22,
+    "loss": 0.12673844397068024,
+    "prediction": 0.11903593689203262,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_453",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_453.npy",
+    "index": 23,
+    "loss": 0.2573394775390625,
+    "prediction": 0.22689427435398102,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_465",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_465.npy",
+    "index": 24,
+    "loss": 0.23672275245189667,
+    "prediction": 0.21078993380069733,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_498",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_498.npy",
+    "index": 25,
+    "loss": 0.3527427911758423,
+    "prediction": 0.29724207520484924,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_523",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_523.npy",
+    "index": 26,
+    "loss": 0.29594478011131287,
+    "prediction": 0.25617149472236633,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_641",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_641.npy",
+    "index": 27,
+    "loss": 0.1812421679496765,
+    "prediction": 0.16576668620109558,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_666",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_666.npy",
+    "index": 28,
+    "loss": 0.1795910745859146,
+    "prediction": 0.16438814997673035,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_682",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_682.npy",
+    "index": 29,
+    "loss": 0.41759905219078064,
+    "prediction": 0.3413737416267395,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_689",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_689.npy",
+    "index": 30,
+    "loss": 0.1877349317073822,
+    "prediction": 0.17116563022136688,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_722",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_722.npy",
+    "index": 31,
+    "loss": 0.30893558263778687,
+    "prediction": 0.26577192544937134,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_726",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_726.npy",
+    "index": 32,
+    "loss": 0.5506496429443359,
+    "prediction": 0.4234248995780945,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_801",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_801.npy",
+    "index": 33,
+    "loss": 0.40377894043922424,
+    "prediction": 0.3322082757949829,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_846",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_846.npy",
+    "index": 34,
+    "loss": 0.21906815469264984,
+    "prediction": 0.1967330276966095,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_855",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_855.npy",
+    "index": 35,
+    "loss": 0.18439942598342896,
+    "prediction": 0.16839642822742462,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_885",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_885.npy",
+    "index": 36,
+    "loss": 0.6451837420463562,
+    "prediction": 0.4754338562488556,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_946",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_946.npy",
+    "index": 37,
+    "loss": 1.516603946685791,
+    "prediction": 0.780544102191925,
+    "label": 0
+  },
+  {
+    "directoryname": "Normal_949",
+    "class": "Normal",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Normal/Normal_949.npy",
+    "index": 38,
+    "loss": 0.21770447492599487,
+    "prediction": 0.19563688337802887,
+    "label": 0
+  },
+  {
+    "directoryname": "Robbery_001",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_001.npy",
+    "index": 39,
+    "loss": 1.7132415771484375,
+    "prediction": 0.18028046190738678,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_002",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_002.npy",
+    "index": 40,
+    "loss": 0.17551745474338531,
+    "prediction": 0.8390227556228638,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_003",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_003.npy",
+    "index": 41,
+    "loss": 0.32209500670433044,
+    "prediction": 0.7246293425559998,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_012",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_012.npy",
+    "index": 42,
+    "loss": 0.3467762768268585,
+    "prediction": 0.7069634795188904,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_019",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_019.npy",
+    "index": 43,
+    "loss": 0.1492001712322235,
+    "prediction": 0.8613966703414917,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_043",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_043.npy",
+    "index": 44,
+    "loss": 0.15057194232940674,
+    "prediction": 0.8602158427238464,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_059",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_059.npy",
+    "index": 45,
+    "loss": 1.5795948505401611,
+    "prediction": 0.2060585618019104,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_061",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_061.npy",
+    "index": 46,
+    "loss": 1.449163556098938,
+    "prediction": 0.23476657271385193,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_064",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_064.npy",
+    "index": 47,
+    "loss": 1.0413506031036377,
+    "prediction": 0.3529776334762573,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_066",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_066.npy",
+    "index": 48,
+    "loss": 0.3140629529953003,
+    "prediction": 0.7304730415344238,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_067",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_067.npy",
+    "index": 49,
+    "loss": 1.5498106479644775,
+    "prediction": 0.21228817105293274,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_097",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_097.npy",
+    "index": 50,
+    "loss": 0.2228633612394333,
+    "prediction": 0.8002241849899292,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_105",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_105.npy",
+    "index": 51,
+    "loss": 0.7810730934143066,
+    "prediction": 0.4579143524169922,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_113",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_113.npy",
+    "index": 52,
+    "loss": 0.19118976593017578,
+    "prediction": 0.8259758353233337,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_117",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_117.npy",
+    "index": 53,
+    "loss": 0.7261319160461426,
+    "prediction": 0.48377665877342224,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_119",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_119.npy",
+    "index": 54,
+    "loss": 0.5900388956069946,
+    "prediction": 0.5543057322502136,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_123",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_123.npy",
+    "index": 55,
+    "loss": 0.8225075006484985,
+    "prediction": 0.4393286406993866,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_133",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_133.npy",
+    "index": 56,
+    "loss": 0.890119194984436,
+    "prediction": 0.4106068015098572,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_134",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_134.npy",
+    "index": 57,
+    "loss": 0.394294798374176,
+    "prediction": 0.6741552948951721,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_135",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_135.npy",
+    "index": 58,
+    "loss": 0.20457126200199127,
+    "prediction": 0.8149966597557068,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_139",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_139.npy",
+    "index": 59,
+    "loss": 0.2378038465976715,
+    "prediction": 0.7883573174476624,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_140",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_140.npy",
+    "index": 60,
+    "loss": 0.4394207298755646,
+    "prediction": 0.6444095969200134,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_141",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_141.npy",
+    "index": 61,
+    "loss": 1.1351113319396973,
+    "prediction": 0.32138633728027344,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_143",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_143.npy",
+    "index": 62,
+    "loss": 0.23511935770511627,
+    "prediction": 0.7904765009880066,
+    "label": 1
+  },
+  {
+    "directoryname": "Robbery_149",
+    "class": "Robbery",
+    "featurepath": "data/processed/features_recortados_len16_seg32_uniform/Robbery/Robbery_149.npy",
+    "index": 63,
+    "loss": 0.3217048645019531,
+    "prediction": 0.7249121069908142,
+    "label": 1
+  }
+]
