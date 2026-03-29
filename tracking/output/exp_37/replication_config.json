@@ -1,0 +1,25 @@
+{
+  "source_experiment": "exp_37",
+  "seed": 42,
+  "num_epochs": 60,
+  "patience": 10,
+  "model_config": {
+    "hidden_size": 64,
+    "num_layers": 3,
+    "bidirectional": false,
+    "dropout_fc": 0.4083214008172575,
+    "lr": 0.0009825246507363782,
+    "weight_decay": 7.41921699359604e-05,
+    "batch_size": 64,
+    "input_size": 512
+  },
+  "original_test_metrics": {
+    "loss": 0.5376837253570557,
+    "accuracy": 0.765625,
+    "precision": 0.6923076923076923,
+    "recall": 0.72,
+    "f1_score": 0.7058823529411765,
+    "auc": 0.8276923076923076
+  },
+  "manifest_features": "experiments\\exp_37\\results\\tables\\manifest_features.csv"
+}
