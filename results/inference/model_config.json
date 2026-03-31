@@ -1,0 +1,71 @@
+{
+    "experiment_name": "exp_69",
+    "hybrid_architecture": {
+        "feature_extractor": {
+            "type": "r3d",
+            "backbone": "R3D-18 (3D ResNet-18)",
+            "pretrained_weights": "Kinetics-400",
+            "output_dim": 512,
+            "clip_length": 16,
+            "frame_size": [
+                112,
+                112
+            ]
+        },
+        "classifier": {
+            "type": "LSTM",
+            "input_size": 512,
+            "hidden_size": 192,
+            "num_layers": 2,
+            "bidirectional": true,
+            "dropout_fc": 0.26448851490160175,
+            "use_attention": true
+        }
+    },
+    "training_config": {
+        "lr": 0.000883171698312604,
+        "weight_decay": 0.0003244160088734161,
+        "batch_size": 64
+    },
+    "video_processing": {
+        "clip_length": 16,
+        "max_segments_per_video": 32,
+        "overlapping": true,
+        "stride": 8,
+        "balance_max_ratio": 1.2,
+        "split_ratios": [
+            0.64,
+            0.16,
+            0.2
+        ]
+    },
+    "performance_metrics": {
+        "loss": 0.5274070501327515,
+        "accuracy": 0.84375,
+        "precision": 0.7777777777777778,
+        "recall": 0.84,
+        "f1_score": 0.8076923076923077,
+        "auc": 0.882051282051282
+    },
+    "class_names": [
+        "Normal",
+        "Robbery"
+    ],
+    "threshold": 0.5,
+    "preprocessing": {
+        "normalize_mean": [
+            0.43216,
+            0.394666,
+            0.37645
+        ],
+        "normalize_std": [
+            0.22803,
+            0.22145,
+            0.216989
+        ],
+        "resize": [
+            112,
+            112
+        ]
+    }
+}
