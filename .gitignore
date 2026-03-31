@@ -84,3 +84,7 @@ results/*.pt
 # NUMPY ARRAYS
 # Los archivos .npy de features pueden ser pesados
 **/*.npy
+
+
+# MODELO COMPLETO DE INFERENCIA
+results/inference/hybrid_model_complete.pth
