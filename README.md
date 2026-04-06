@@ -149,6 +149,13 @@ Para obtener el dataset completo empleado en el proyecto se debe:
 3. Seguir la estructura indicada en `data/raw/README.md`
 
 
+## Implementación en Aplicación Web
+
+A partir de los resultados y el "mejor modelo" obtenido en este ciclo de vida de experimentación y MLOps, se ha desarrollado una aplicación completa y funcional (backend de inferencia + dashboard interactivo).
+
+El código fuente interactivo y la arquitectura para despliegue de estos resultados se encuentra completamente desacoplado y disponible en el siguiente repositorio:
+ **[IvanG0nzalez/RobberyDetection-App](https://github.com/IvanG0nzalez/RobberyDetection-App.git)**
+
 ## Autor
 Iván Alejandro González Ortega
 
