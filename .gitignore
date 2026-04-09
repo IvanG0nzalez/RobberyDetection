@@ -37,6 +37,7 @@ desktop.ini
 # Ignorar todos los videos
 data/raw/dataset_videos_original/**/*.mp4
 data/raw/dataset_videos_recortados/**/*.mp4
+data/raw/dataset_videos_raw/**/*.mp4
 
 # EXCEPCIONES: Incluir solo archivos de muestra específicos
 # 1 video Normal y 1 video Robbery como ejemplo
