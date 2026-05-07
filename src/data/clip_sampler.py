@@ -3,8 +3,27 @@ import cv2
 import math
 import re
 import argparse
+import json
 from pathlib import Path
 from tqdm import tqdm
+
+def save_generation_metadata(output_dir, clip_length, max_segments, overlapping, stride):
+    """
+    Guarda un archivo JSON con los parámetros usados para generar los clips.
+    Esto permite validar si los clips existentes fueron generados con los parámetros correctos.
+    """
+    metadata = {
+        "clip_length": clip_length,
+        "max_segments_per_video": max_segments,
+        "overlapping": overlapping,
+        "stride": stride if overlapping else None
+    }
+    
+    metadata_path = Path(output_dir) / "generation_metadata.json"
+    with open(metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=4)
+    
+    print(f"Metadata de generación guardada en: {metadata_path}")
 
 def save_clip(frames, out_path, fps=30):
     """
@@ -51,7 +70,7 @@ def process_video(video_path, output_dir, cls, clip_length, max_segments, fps=30
     """
     cap = cv2.VideoCapture(video_path)
     if not cap.isOpened():
-        print(f"Error: No se pudo abrir el video {video_path}")
+        print(f"   No se pudo abrir el video {video_path}")
         return
 
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -63,7 +82,7 @@ def process_video(video_path, output_dir, cls, clip_length, max_segments, fps=30
         num_possible_clips = len(possible_start_frames)
 
         if num_possible_clips == 0:
-            print(f"Advertencia: El video {video_path} es demasiado corto para extraer clips.")
+            print(f"El video {video_path} es demasiado corto para extraer clips.")
             cap.release()
             return
         
@@ -77,7 +96,7 @@ def process_video(video_path, output_dir, cls, clip_length, max_segments, fps=30
         num_segments = total_frames // clip_length
 
         if num_segments == 0:
-            print(f"Advertencia: El video {video_path} es demasiado corto para extraer clips.")
+            print(f"El video {video_path} es demasiado corto para extraer clips.")
             cap.release()
             return
     
@@ -106,7 +125,7 @@ def process_video(video_path, output_dir, cls, clip_length, max_segments, fps=30
             out_path = video_out_dir / out_name
             save_clip(frames, out_path, fps=fps)
         elif len(frames) > 0:
-            print(f"Advertencia: Clip incompleto extraído de {video_path} comenzando en frame {start_frame}. Se esperaban {clip_length} frames, pero se obtuvieron {len(frames)}.")
+            print(f"Clip incompleto extraído de {video_path} comenzando en frame {start_frame}. Se esperaban {clip_length} frames, pero se obtuvieron {len(frames)}.")
     
     cap.release()
 
@@ -123,7 +142,6 @@ def main():
 
     args = parser.parse_args()
 
-    print("Iniciando extracción de clips...")
     print(f"Modo de muestreo: {'Denso (Overlapping)' if args.overlapping else 'Uniforme (Disperso)'}")
     if args.overlapping:
         print(f"Stride: {args.stride}")
@@ -133,7 +151,7 @@ def main():
         class_output_dir = Path(args.output_dir) / cls
 
         if not class_input_dir.exists():
-            print(f"Advertencia: El directorio de entrada para la clase '{cls}' no existe: {class_input_dir}")
+            print(f"El directorio de entrada para la clase '{cls}' no existe: {class_input_dir}")
             continue
 
         class_output_dir.mkdir(parents=True, exist_ok=True)
@@ -150,6 +168,15 @@ def main():
                 overlapping=args.overlapping,
                 stride=args.stride
             )
+    
+    # Guardar metadata de generación
+    save_generation_metadata(
+        args.output_dir,
+        args.clip_length,
+        args.max_segments,
+        args.overlapping,
+        args.stride
+    )
     
     print("Extracción de clips completada.")
 

@@ -1,0 +1,6 @@
+{
+    "clip_length": 16,
+    "max_segments_per_video": 32,
+    "overlapping": true,
+    "stride": 8
+}

@@ -1,0 +1,5 @@
+clip_id,mean_loss,max_loss,conf_error,error_freq,cls,split,video_id,rule_high_loss,rule_conf_error,rule_error_freq,n_rules_triggered,decision
+Robbery_067,2.6580803394317627,2.6580803394317627,0.4299173653125763,0.0,Robbery,test,Robbery_067,True,True,False,2,filter
+Robbery_059,2.518764019012451,2.518764019012451,0.4194408804178238,0.0,Robbery,test,Robbery_059,True,True,False,2,filter
+Robbery_135,2.2358787059783936,2.2358787059783936,0.3931018337607384,0.0,Robbery,test,Robbery_135,True,True,False,2,filter
+Normal_726,1.9225620031356812,1.9225620031356812,0.35376816987991333,0.0,Normal,test,Normal_726,True,True,False,2,filter

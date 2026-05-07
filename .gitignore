@@ -37,6 +37,7 @@ desktop.ini
 # Ignorar todos los videos
 data/raw/dataset_videos_original/**/*.mp4
 data/raw/dataset_videos_recortados/**/*.mp4
+data/raw/dataset_videos_raw/**/*.mp4
 
 # EXCEPCIONES: Incluir solo archivos de muestra específicos
 # 1 video Normal y 1 video Robbery como ejemplo
@@ -46,41 +47,35 @@ data/raw/dataset_videos_recortados/**/*.mp4
 !data/raw/dataset_videos_recortados/Robbery/Robbery001_x264.mp4
 
 # DATA - Clips intermedios
-# Ignorar todos los clips procesados
-data/interim/**/
-# Mantener la estructura de directorios vacíos
-!data/interim/*/
-!data/interim/*/.gitkeep
+# Ignorar todo el contenido interno de las subcarpetas de generación
+data/interim/*/*
 
-# EXPERIMENTS - Datos procesados
-# Ignorar todos los archivos en processed_data pero conservar estructura de directorios
-experiments/*/processed_data/**/*
-!experiments/*/processed_data/**/
-!experiments/*/processed_data/**/.gitkeep
+# Excepción 1: Conservar el archivo generation_metadata.json
+!data/interim/*/generation_metadata.json
 
-# Ignorar todos los datos procesados de experimentos en results
-experiments/*/results/**/*
+# Excepción 2: Conservar los directorios base de las clases
+!data/interim/*/Normal/
+!data/interim/*/Robbery/
 
-# EXCEPCIONES: Mantener solo algunos archivos de ejemplo
-# Permitir archivos .gitkeep y README para mantener estructura
-!experiments/*/results/.gitkeep
-!experiments/*/results/tables/
-!experiments/*/results/tables/*.csv
-!experiments/*/results/tables/*.json
-!experiments/*/results/plots/
-!experiments/*/results/plots/*.png
-!experiments/*/results/plots/*.csv
-!experiments/*/results/models/
-!experiments/*/results/models/*.pth
+# Excepción 3: Vaciar el contenido dentro de Normal y Robbery
+data/interim/*/Normal/*
+data/interim/*/Robbery/*
 
-# Mantener archivos de configuración de experimentos
-!experiments/*/config_run.yml
+# Excepción 4: Permitir archivos .gitkeep para que git trackee los directorios vacíos
+!data/interim/*/Normal/.gitkeep
+!data/interim/*/Robbery/.gitkeep
 
-# MODELS - Modelos entrenados
-# Ignorar modelos .pt y .pth (pueden ser muy grandes)
-#*.pt
-#*.pth
-!src/models/.gitkeep
+# DATA - Archivos procesados (Features numpy)
+# Ignorar el contenido completo de directorios procesados de features
+data/processed/*/*/*
+
+# Excepción 1: Conservar el contenedor con los directorios base de clases
+!data/processed/*/Normal/
+!data/processed/*/Robbery/
+
+# Excepción 2: Permitir los archivos .gitkeep para mantener la estructura visible
+!data/processed/*/Normal/.gitkeep
+!data/processed/*/Robbery/.gitkeep
 
 # RESULTS - Resultados finales
 # Mantener código de inferencia pero ignorar modelos pesados
@@ -90,3 +85,7 @@ results/*.pt
 # NUMPY ARRAYS
 # Los archivos .npy de features pueden ser pesados
 **/*.npy
+
+
+# MODELO COMPLETO DE INFERENCIA
+results/inference/hybrid_model_complete.pth

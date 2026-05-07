@@ -1,23 +1,23 @@
 {
     "best_hyperparameters": {
         "hidden_size": 64,
-        "num_layers": 3,
-        "bidirectional": true,
-        "lr": 0.0009566972417518846,
-        "weight_decay": 0.00020492205968140794,
+        "num_layers": 2,
+        "bidirectional": false,
+        "lr": 0.0006488997045167805,
+        "weight_decay": 0.0003027370783548953,
         "batch_size": 64,
-        "dropout_fc": 0.2901983986193449
+        "dropout_fc": 0.3263718798138693
     },
-    "best_validation_loss": 0.4800916314125061,
-    "best_validation_auc": 0.8467741935483871,
-    "best_epoch": 10,
+    "best_validation_loss": 0.5655035972595215,
+    "best_validation_auc": 0.7741935483870969,
+    "best_epoch": 9,
     "test_metrics": {
-        "loss": 0.6564040780067444,
-        "accuracy": 0.75,
-        "precision": 0.6956521739130435,
-        "recall": 0.64,
+        "loss": 0.5178603529930115,
+        "accuracy": 0.78125,
+        "precision": 0.8235294117647058,
+        "recall": 0.56,
         "f1_score": 0.6666666666666666,
-        "auc": 0.7743589743589744
+        "auc": 0.8184615384615384
     },
-    "features_used": "..\\experiments\\exp_04\\processed_data\\features"
+    "features_manifest": "..\\experiments\\exp_04\\results\\tables\\manifest_features.csv"
 }

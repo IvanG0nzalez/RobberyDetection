@@ -1,44 +1,44 @@
-random_seed: 42
+random_seed: 42 # Semilla para reproducibilidad de resultados
 
-#Aquí empiezan los experimentos con el dataset de videos recortados
 experiment:
-  name: "exp_13"
-  base_dir: "../experiments"
+  name: "exp_01" # Nombre del experimento (afecta nombres de archivos y directorios)
+  base_dir: "../experiments" # Directorio base donde se guardan los resultados de los experimentos
 
 data_source:
-  raw_videos_dir: "../data/raw/dataset_videos_recortados"
-  input_clips_dir: "../data/interim/clips_recortados_13"
+  raw_videos_dir: "../data/raw/dataset_videos_original" # Directorio base donde están los videos sin procesar
+  # Directorios de clips y features se generan de forma automática
 
 data_pipeline:
-  balance_mode: "none"
-  splitted_clips_output_subdir: "processed_data/clips_splitted"
-  manifests_subdir: "results/tables"
-  
+  balance_mode: "none" # "none", "oversample", "undersample"
+  manifests_subdir: "results/tables" # Subdirectorio para guardar los CSV de manifestos de clips y features
 
 video_processing:
-  clip_length: 16
-  max_segments_per_video: 32
-  overlapping: false
-  stride: 8
-  balance_max_ratio: 1.2
-  split_ratios: [0.64, 0.16, 0.20]
+  # Parámetros que afectan la generación de clips
+  clip_length: 16 # Frames por clip (afecta duración temporal)
+  max_segments_per_video: 32 # Clips máximos por video (afecta cantidad de datos)
+  overlapping: false # Si los clips se solapan (afecta estrategia de muestreo)
+  stride: 8 # Frames entre clips si overlapping=true (afecta densidad)
+  # Otros parámetros
+  balance_max_ratio: 1.2 # Máxima proporción de clips entre las clases
+  split_ratios: [0.64, 0.16, 0.20] # Proporciones para train, val, test (deben sumar 1.0)
 
 feature_extraction:
-  features_output_subdir: "processed_data/features"
-  extractor: "r3d"
+  extractor: "r3d" # Modelo de extracción de características
+  features_manifest_name: "manifest_features.csv" # Nombre del CSV con las rutas de los features extraídos
 
 lstm_model:
-  input_size: 512
+  input_size: 512 # Dimensionalidad de las características extraídas por el extractor
 
 training:
-  epochs: 60
-  patience: 10
+  epochs: 60 # Número de épocas máximas de entrenamiento
+  patience: 10 # Paciencia para early stopping (número de épocas sin mejora antes de detener)
 
 optuna_search:
-  n_trials: 100
-  results_csv_name: "optuna_lstm_trials.csv"
+  n_trials: 100 # Número de pruebas para la optimización de hiperparámetros
+  results_csv_name: "optuna_lstm_trials.csv" # Nombre del CSV donde se guardan los resultados de las pruebas de Optuna
 
 model_artifacts:
+  # Directorios y nombres de archivos para guardar modelos, métricas, predicciones y gráficos
   models_subdir: "results/models"
   final_model_name: "best_lstm_model.pth"
   final_metrics_name: "lstm_final_metrics.json"

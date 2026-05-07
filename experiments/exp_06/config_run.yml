@@ -6,13 +6,10 @@ experiment:
 
 data_source:
   raw_videos_dir: "../data/raw/dataset_videos_original"
-  input_clips_dir: "../data/interim/clips_original_06"
 
 data_pipeline:
   balance_mode: "undersample"
-  splitted_clips_output_subdir: "processed_data/clips_splitted"
-  manifests_subdir: "results/tables"
-  
+  manifests_subdir: "results/tables"  
 
 video_processing:
   clip_length: 16
@@ -23,8 +20,8 @@ video_processing:
   split_ratios: [0.64, 0.16, 0.20]
 
 feature_extraction:
-  features_output_subdir: "processed_data/features"
   extractor: "r3d"
+  features_manifest_name: "manifest_features.csv"
 
 lstm_model:
   input_size: 512
